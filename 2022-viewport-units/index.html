@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Viewport Units</title>
+    <style>
+      /** Reset CSS **/
+
+      :root {
+        --color: #8ca4d5;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .top-scrollbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        scale: 0 1;
+        height: 0.5rem;
+        background-color: var(--color);
+        animation: scroll-animation linear;
+        animation-timeline: scroll();
+        transform-origin: left;
+      }
+
+      @keyframes scroll-animation {
+        from {
+          scale: 0 1;
+        }
+        to {
+          scale: 1 1;
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        html {
+          background-color: darkslateblue;
+          height: 300vh;
+          color: white;
+        }
+      }
+      .hero {
+        background-color: #131313;
+        height: 100dvh;
+        display: grid;
+        place-content: center;
+
+        & .button {
+          text-decoration: none;
+          background-color: #f9f9f9;
+          color: #131313;
+          padding: 1rem;
+          border: none;
+          border-radius: 0.25rem;
+          font-size: 1rem;
+          cursor: pointer;
+        }
+      }
+      #space {
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top-scrollbar"></div>
+    <div class="hero">
+      <h1>Alertdown</h1>
+      <a href="#down" class="button" role="button">Let's Go</a>
+    </div>
+    <div id="space"></div>
+    <div id="down">
+      <h1>Hello my peeps :)</h1>
+    </div>
+  </body>
+</html>

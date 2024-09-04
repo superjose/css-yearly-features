@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Follow Parent Height Animation</title>
+    <style>
+      .container {
+        position: relative;
+        height: 100vh; /* Parent height */
+        background-color: lightgray;
+        overflow: hidden;
+      }
+
+      .animated-box {
+        position: absolute;
+        width: 10%; /* Stretch across the full width */
+        height: 50px; /* Box height */
+        background-color: red;
+        top: 0; /* Start at the top */
+        left: 0;
+        transition: top 2s ease-in-out; /* Animate the top property */
+      }
+
+      /* This will trigger the animation */
+      .container:hover .animated-box {
+        top: calc(100% - 50px); /* Move to the bottom */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="animated-box"></div>
+    </div>
+  </body>
+</html>

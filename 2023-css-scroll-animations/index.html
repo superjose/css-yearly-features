@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Scroll Animations</title>
+    <style>
+      :root {
+        --main-background-color: #5f4bb6;
+      }
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      @media (prefers-color-scheme: dark) {
+        html {
+          background-color: #202a25;
+          color: white;
+          height: 300vh;
+        }
+      }
+      /* @keyframes slide-fade-in {
+        from {
+          opacity: 0;
+          transform: translateY(5vh);
+        }
+      } */
+
+      .space {
+        height: 100dvh;
+      }
+
+      .scroll-watcher {
+        height: 0.5rem;
+        width: 0;
+        left: 0;
+        position: fixed;
+        top: 0;
+        z-index: 1000;
+        background-color: fuchsia;
+        animation: scroll-watcher linear;
+        /**
+          scroll can receive: block and inline which will also be the same as x and y axis. 
+          You can also pass x, and y
+        */
+        animation-timeline: scroll();
+      }
+
+      @keyframes scroll-watcher {
+        to {
+          width: 100%;
+        }
+      }
+
+      nav {
+        width: 100%;
+        height: 4rem;
+        background-color: #c4ebc8;
+      }
+
+      .hero {
+        background-color: var(--main-background-color);
+        height: 60dvh;
+        z-index: 2;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+        width: min(100% -2rem, 800px);
+        margin-inline: auto;
+        place-items: center;
+      }
+      .boxes {
+        background-color: #8ca4d5;
+        height: 20rem;
+        width: 20rem;
+        border-radius: 0.25rem;
+        animation: slide-fade-in 0.5s ease-in-out;
+        animation-timeline: view();
+        transition: transform 0.15s ease-in-out;
+        &::after {
+          --size: 30px;
+          content: "";
+          display: block;
+          height: var(--size);
+          width: var(--size);
+          background-color: yellow;
+          border-radius: 0.25rem;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+
+          /* transition: background-color 0.15s ease-in-out; */
+          /* animation: run 5s linear ease-in-out;
+          */
+          /**
+            This uses the scroll
+              animation: run linear;
+              animation-timeline: view(); 
+          */
+          /**
+            * This uses the traditional route
+            * Note that I don't specify the time in scroll
+            * animation run 5s linear;
+          */
+          /* transform: translateX(0); */
+          /* transition: transform 0.15s ease-in-out; */
+
+          animation: run linear 5s infinite;
+        }
+        &:hover {
+          transform: rotate(-7deg) scale(1.05);
+          width: 22rem;
+          &::after {
+            transform: translateX(50%);
+          }
+        }
+      }
+      @keyframes run {
+        0% {
+          top: 0;
+          left: 0;
+        }
+        25% {
+          /* transform: translateY(100%); */
+          top: calc(100% - var(--size));
+          left: 0;
+          /* bottom: 0; */
+        }
+        50% {
+          top: calc(100% - var(--size));
+          left: calc(100% - var(--size));
+        }
+        75% {
+          top: 0;
+          left: calc(100% - var(--size));
+        }
+        100% {
+          top: 0;
+          left: 0;
+        }
+      }
+
+      @keyframes slide-fade-in {
+        from {
+          opacity: 0;
+          scale: 0.8;
+        }
+        to {
+          opacity: 1;
+          scale: 1;
+        }
+      }
+
+      .passing-boxes {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .pass-box {
+        width: 10rem;
+        height: 10rem;
+        background-color: yellowgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scroll-watcher"></div>
+    <nav></nav>
+    <div class="hero"></div>
+    <div class="grid">
+      <div class="boxes"></div>
+      <div class="boxes"></div>
+      <div class="boxes"></div>
+      <div class="boxes"></div>
+      <div class="boxes"></div>
+      <div class="boxes"></div>
+    </div>
+
+    <div class="passing-boxes">
+      <div class="pass-box"></div>
+      <div class="pass-box"></div>
+      <div class="pass-box"></div>
+      <div class="pass-box"></div>
+      <div class="pass-box"></div>
+      <div class="pass-box"></div>
+    </div>
+  </body>
+</html>

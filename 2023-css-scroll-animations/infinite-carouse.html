@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infinite CSS Image Carousel</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Container for the carousel */
+      .carousel-container {
+        width: 100vw;
+        height: 300px; /* Adjust height based on image size */
+        overflow: hidden;
+        position: relative;
+        background-color: #f0f0f0;
+      }
+
+      /* Wrapper that holds all the images */
+      .carousel {
+        display: flex;
+        width: calc(300px * 14); /* 7 images + 7 duplicates */
+        animation: slide 16s linear infinite; /* Continuous loop animation */
+      }
+
+      /* Style each image */
+      .carousel img {
+        width: 300px;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Keyframes to move the carousel */
+      @keyframes slide {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(
+            calc(-300px * 7)
+          ); /* Move 7 images to the left */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Carousel container -->
+    <div class="carousel-container">
+      <!-- Carousel images inside a flexbox (with duplicate images for seamless transition) -->
+      <div class="carousel">
+        <!-- Original 7 images -->
+        <img src="https://via.placeholder.com/300x300?text=1" alt="Image 1" />
+        <img src="https://via.placeholder.com/300x300?text=2" alt="Image 2" />
+        <img src="https://via.placeholder.com/300x300?text=3" alt="Image 3" />
+        <img src="https://via.placeholder.com/300x300?text=4" alt="Image 4" />
+        <img src="https://via.placeholder.com/300x300?text=5" alt="Image 5" />
+        <img src="https://via.placeholder.com/300x300?text=6" alt="Image 6" />
+        <img src="https://via.placeholder.com/300x300?text=7" alt="Image 7" />
+
+        <!-- Duplicate of the 7 images for seamless looping -->
+        <img src="https://via.placeholder.com/300x300?text=1" alt="Image 1" />
+        <img src="https://via.placeholder.com/300x300?text=2" alt="Image 2" />
+        <img src="https://via.placeholder.com/300x300?text=3" alt="Image 3" />
+        <img src="https://via.placeholder.com/300x300?text=4" alt="Image 4" />
+        <img src="https://via.placeholder.com/300x300?text=5" alt="Image 5" />
+        <img src="https://via.placeholder.com/300x300?text=6" alt="Image 6" />
+        <img src="https://via.placeholder.com/300x300?text=7" alt="Image 7" />
+      </div>
+    </div>
+  </body>
+</html>

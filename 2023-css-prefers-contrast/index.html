@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Prefers Contrast</title>
+    <style>
+      @media (prefers-contrast: less) {
+        p {
+          font-weight: normal;
+        }
+      }
+      @media (prefers-contrast: more) {
+        p {
+          font-weight: bold;
+        }
+      }
+      @media (prefers-contrast: forced) {
+        p {
+          font-weight: bold;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      To Enter the Render Tab - Press Control + Shift + P (Windows / Linux) or
+      Command + Shift + P (Mac)
+    </p>
+  </body>
+</html>
